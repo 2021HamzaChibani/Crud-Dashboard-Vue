@@ -16,7 +16,14 @@ class Organization extends Model
      * @var string[]
      */
     protected $fillable = [
-        'organisatie',
+        'name',
+        'lastname',
+        'country' ,
+        'street' ,
+        'city' ,
+        'kvk',
         'email',
+        'region',
+        'phone',
     ];
 }

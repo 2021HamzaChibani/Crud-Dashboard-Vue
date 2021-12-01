@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrganizationRequest;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -36,43 +37,50 @@ class OrganizationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrganizationRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Organization::create($validated);
+        return redirect()->route('organizations.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $organization
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Organization $organization)
     {
-        //
+        return Inertia::render('Organization/Show' , compact('organization'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $organization
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Organization $organization)
     {
-        //
+        return Inertia::render('Organization/Edit' , compact('organization'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $organization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreOrganizationRequest $request, Organization $organization)
     {
-        //
+        $validated = $request->safe()->only(['name', 'email','kvk','street','phone']);
+
+        $organization->update($validated);
+
+        return redirect()->route('organizations.index');
     }
 
     /**

@@ -4,7 +4,10 @@
         <div class="w-64 h-screen">
             <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
                 <div class="flex items-center flex-shrink-0 px-4 space-y-5">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow" />
+                    <img class="h-8 w-auto" src="../images/dashboard-interface.png" alt="Worrkflow" />
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        Dashboard
+                    </h3>
                 </div>
                 <div class="mt-5 flex-grow flex flex-col">
                     <nav class="flex-1 bg-white space-y-1" aria-label="Sidebar">
@@ -76,7 +79,7 @@
                                 <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                             </div>
                             <div class="ml-3">
-                                <div class="text-base font-medium text-gray-800">Tom Cook</div>
+                                <div class="text-base font-medium text-gray-800"></div>
                                 <div class="text-sm font-medium text-gray-500">tom@example.com</div>
                             </div>
                         </div>
@@ -99,15 +102,17 @@
 </template>
 
 <script>
+import { Link } from '@inertiajs/inertia-vue3'
 import { Disclosure,  DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { SearchIcon } from '@heroicons/vue/solid'
 import {  MenuIcon, XIcon } from '@heroicons/vue/outline'
-import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/vue/outline'
+import { CalendarIcon, ChartBarIcon, OfficeBuildingIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/vue/outline'
+
 
 const navigation = [
     { name: 'Dashboard', icon: HomeIcon, href: '', current: true },
-    { name: 'Users', icon: UsersIcon, href: '#', current: false },
-    { name: 'Projects', icon: FolderIcon, href: '#', current: false },
+    { name: 'Users', icon: UsersIcon, href: route('users.index'), current: false },
+    { name: 'Organisatie', icon: OfficeBuildingIcon, href: route('organizations.index'), current: false },
     { name: 'Calendar', icon: CalendarIcon, href: '#', current: false },
     { name: 'Documents', icon: InboxIcon, href: '#', current: false },
     { name: 'Reports', icon: ChartBarIcon, href: '#', current: false },
@@ -115,6 +120,7 @@ const navigation = [
 
 export default {
     components: {
+        Link,
         Disclosure,
         DisclosurePanel,
         Menu,

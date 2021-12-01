@@ -27,16 +27,16 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                             <tr v-for="organization in organizations.data" :key="organization.id">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {{ organization.organisatie }}
+                                    {{ organization.name }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ organization.email }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link :href="route('organization.show', user.id)" class="text-indigo-600 hover:text-indigo-900">Show</Link>
+                                    <Link :href="route('organizations.show', organization.id)" class="text-indigo-600 hover:text-indigo-900">Show</Link>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link :href="route('organization.edit', user.id)" class="text-indigo-600 hover:text-indigo-900">Edit</Link>
+                                    <Link :href="route('organizations.edit', organization.id)" class="text-indigo-600 hover:text-indigo-900">Edit</Link>
                                 </td>
                             </tr>
                             </tbody>

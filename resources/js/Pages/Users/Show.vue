@@ -34,7 +34,7 @@
                                             Email
                                         </dt>
                                         <dd>
-<!--                                            {{user.email}}-->
+                                            {{user.email}}
                                         </dd>
                                     </div>
                                 </dl>
