@@ -3,27 +3,55 @@
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Gegevens User</h3>
                     <p class="mt-1 text-sm text-gray-500">
-                        Use a permanent address where you can receive mail.
+                        Vul hier u informatie in van uw user.
                     </p>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2">
                     <form  @submit.prevent="createUser" method="post">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                <input v-model="form.name" type="text" name="first_name" id="first_name" autocomplete="given-name" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">Naam </label>
+                                <input type="text" v-model="form.name" name="first-name" id="first-name" autocomplete="given-name" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
                             </div>
 
-                            <div class="col-span-6 sm:col-span-4">
-                                <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
-                                <input  v-model="form.email" type="text" name="email_address" id="email" autocomplete="email" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Achternaam</label>
+                                <input type="text" v-model="form.lastname" name="last-name" id="last-name" autocomplete="family-name" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
                             </div>
 
-                            <div class="col-span-6 sm:col-span-4">
-                                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                                <input v-model="form.password" type="password" name="password" id="password" autocomplete="password" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="email-address" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="text" v-model="form.email" name="email-address" id="email-address" autocomplete="email" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="region" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
+                                <input type="text" v-model="form.password" name="region" id="region" autocomplete="address-level1" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Land</label>
+                                <input type="text" v-model="form.country" name="country" id="country"  class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="street-address" class="block text-sm font-medium text-gray-700">Straat</label>
+                                <input type="text" v-model="form.street" name="street-address" id="street-address" autocomplete="street-address" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="city" class="block text-sm font-medium text-gray-700">Stad</label>
+                                <input type="text" v-model="form.city" name="city" id="city" autocomplete="address-level2" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="postal-code" class="block text-sm font-medium text-gray-700">Regio</label>
+                                <input type="text" v-model="form.region" name="postal-code" id="postal-code" autocomplete="postal-code" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
+                            </div>
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="postal-code" class="block text-sm font-medium text-gray-700">Telefoon nummer</label>
+                                <input type="text" v-model="form.phone" name="postal-code" id="phone"  class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
                             </div>
                             <div class="pt-5">
                                 <div class="flex justify-end">
@@ -41,7 +69,6 @@
             </div>
         </div>
     </Layout>
-
 </template>
 
 <script>
@@ -58,7 +85,13 @@ export default {
         const form = useForm({
             _method: 'post',
             name:'',
+            lastname:'',
+            country:'',
             email:'',
+            street:'',
+            city:'',
+            region:'',
+            phone:'',
             password:'',
         })
 

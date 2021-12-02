@@ -21,12 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'last_name',
+        'lastname',
         'country',
-        'street_address',
+        'street',
         'city',
         'region',
-        'postal_code',
+        'phone',
     ];
 
     /**
@@ -48,8 +48,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function appointment()
-    {
-        return $this->hasOne('App\Models\Appointment');
-    }
 }
