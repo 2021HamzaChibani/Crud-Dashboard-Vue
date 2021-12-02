@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -21,10 +23,13 @@ use Inertia\Inertia;
 
 
 
-
+Route::resource('dashboard', DashboardController::class);
 Route::resource('users', UserController::class);
 Route::resource('organizations', OrganizationController::class);
+Route::resource('appointment', AppointmentController::class);
+Route::resource('invoices', InvoiceController::class);
 
+Route::get('/events',SearchController::class)->name('events');
 
 
 

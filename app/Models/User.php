@@ -17,16 +17,17 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $primaryKey = 'appointment_id';
     protected $fillable = [
         'name',
         'email',
         'password',
-        'last_name',
+        'lastname',
         'country',
-        'street_address',
+        'street',
         'city',
         'region',
-        'postal_code',
+        'phone',
     ];
 
     /**
@@ -52,4 +53,5 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Appointment');
     }
+
 }

@@ -110,12 +110,11 @@ import { CalendarIcon, ChartBarIcon, OfficeBuildingIcon, HomeIcon, InboxIcon, Us
 
 
 const navigation = [
-    { name: 'Dashboard', icon: HomeIcon, href: '', current: true },
+    { name: 'Dashboard', icon: HomeIcon, href: route('dashboard.index'), current: true },
     { name: 'Users', icon: UsersIcon, href: route('users.index'), current: false },
     { name: 'Organisatie', icon: OfficeBuildingIcon, href: route('organizations.index'), current: false },
     { name: 'Calendar', icon: CalendarIcon, href: '#', current: false },
-    { name: 'Documents', icon: InboxIcon, href: '#', current: false },
-    { name: 'Reports', icon: ChartBarIcon, href: '#', current: false },
+    { name: 'Invoices', icon: InboxIcon, href: route('invoices.index'), current: false },
 ]
 
 export default {

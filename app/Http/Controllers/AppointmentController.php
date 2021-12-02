@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Organization;
-use App\Models\User;
+use App\Http\Requests\StoreAppointmentRequest;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-class DashboardController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Dashboard/Index',[
-            'organizations' => Organization::paginate(5),
-            'users' => User::paginate(5)
-        ]);
+        //
     }
 
     /**
@@ -38,18 +34,21 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAppointmentRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Appointment::create($validated);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Appointment $appointment)
     {
         //
     }
@@ -57,10 +56,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Appointment $appointment)
     {
         //
     }
@@ -69,10 +68,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Appointment $appointment)
     {
         //
     }
@@ -80,10 +79,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Appointment $appointment)
     {
         //
     }
