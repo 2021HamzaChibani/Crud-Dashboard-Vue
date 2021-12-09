@@ -5,11 +5,11 @@
                 <div class="md:col-span-1">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Gegevens User</h3>
                     <p class="mt-1 text-sm text-gray-500">
-                        Vul hier u informatie in van uw user.
+                        Vul hier u informatie in van uw User.
                     </p>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2">
-                    <form  @submit.prevent="createUser" method="post">
+                    <form @submit.prevent="updateCustomerInformation" method="PUT">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="first-name" class="block text-sm font-medium text-gray-700">Naam </label>
@@ -53,20 +53,16 @@
                                 <label for="postal-code" class="block text-sm font-medium text-gray-700">Telefoon nummer</label>
                                 <input type="text" v-model="form.phone" name="postal-code" id="phone"  class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" />
                             </div>
-                            <div class="col-span-6 sm:col-span-3">
-                            <input  aria-describedby="candidates-description" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                            <input  aria-describedby="candidates-description" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                            <input  aria-describedby="candidates-description" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                            </div>
                             <div class="pt-5">
                                 <div class="flex justify-end">
-                                    <Link :href="route('users.index')" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Cancel
+
+                                    <Link  @click="destroy(customer.id)" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Delete
                                     </Link>
                                     <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         Save
                                     </button>
-                                   </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -77,36 +73,46 @@
 </template>
 
 <script>
-import {useForm} from '@inertiajs/inertia-vue3'
 import Layout from "../../Shared/Layout";
+import {useForm} from '@inertiajs/inertia-vue3'
 
 export default {
+
     components:{Layout},
 
-    props:['users'],
+    props:['customer'],
 
     setup(props){
 
         const form = useForm({
-            _method: 'post',
-            name:'',
-            lastname:'',
-            country:'',
-            email:'',
-            street:'',
-            city:'',
-            region:'',
-            phone:'',
-            password:'',
+            _method: 'PUT',
+            name:props.customer.name,
+            lastname:props.customer.lastname,
+            country:props.customer.country,
+            street:props.customer.street,
+            city:props.customer.city,
+            region:props.customer.region,
+            phone:props.customer.phone,
+            email: props.customer.email,
+            password: props.customer.password,
         })
 
-        const createUser = () => {
-            form.post(route("users.store"));
+        const updateCustomerInformation = ()  => {
+            form.post(route('customers.update', props.customer.id), {
+                preserveScroll: true,
+            });
         };
 
-        return{ form, createUser }
+        return{ form, updateCustomerInformation }
 
     },
+
+    methods: {
+        destroy(id) {
+            this.$inertia.delete(route("customers.destroy", id));
+        },
+    },
+
 
 }
 </script>
