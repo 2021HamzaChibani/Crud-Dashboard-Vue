@@ -33,6 +33,8 @@ class StoreUserRequest extends FormRequest
             'region' => 'nullable',
             'lastname' => 'nullable',
             'country' => 'nullable',
+            'logo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048',
+            'signature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
         ];
     }
 }

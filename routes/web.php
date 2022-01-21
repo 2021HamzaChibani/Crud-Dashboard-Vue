@@ -41,6 +41,8 @@ Route::middleware('auth:sanctum')->group( function() {
     Route::resource('organizations', OrganizationController::class);
     Route::resource('appointment', AppointmentController::class);
     Route::resource('invoices', InvoiceController::class);
+    Route::get('/invoices/{invoice}/pdf', [InvoiceController::class, 'pdf'])->name('showPDF');
+    Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'downloadpdf'])->name('downloadPDF');
     Route::resource('customers', CustomerController::class);
     Route::get('/events',SearchController::class)->name('events');
 

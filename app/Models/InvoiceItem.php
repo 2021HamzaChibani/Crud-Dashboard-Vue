@@ -15,9 +15,19 @@ class InvoiceItem extends Model
      * @var string[]
      */
     protected $fillable = [
-        'product sku',
         'title',
         'price' ,
         'quantity' ,
     ];
+
+    protected $casts = [
+        'price' => 'float',
+        'quantity' => 'float',
+    ];
+
+
+    public function invoices()
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }

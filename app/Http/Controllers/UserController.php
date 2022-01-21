@@ -40,10 +40,13 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $validated = $request->validated();
+        $data = $request->validated();
+        $data['logo'] = $request->file('logo')->store('public/logos');
+        $data['signature'] = $request->file('signature')->store('public/signatures');
 
-        User::create($validated);
-        return redirect()->route('users.index');
+        User::create($data);
+
+        return redirect()->route('users.index')->with('message', ' Successfully Created!');
     }
 
     /**
@@ -77,11 +80,16 @@ class UserController extends Controller
      */
     public function update(StoreUserRequest $request, User $user)
     {
-        $validated = $request->safe()->only(['name', 'email','lastname']);
+        $data = $request->safe()->only('logo','phone','name','email','lastname');
 
-        $user->update($validated);
 
-        return redirect()->route('users.index');
+        $data['logo'] = $request->file('logo')->store('public/logos');
+        $data['signature'] = $request->file('signature')->store('public/signatures');
+
+        $user->update($data);
+
+
+        return redirect()->route('users.index')->with('message', ' Successfully Updated!');
     }
 
     /**

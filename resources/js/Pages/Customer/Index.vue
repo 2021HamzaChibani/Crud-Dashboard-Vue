@@ -1,8 +1,5 @@
 <template>
     <layout>
-        <Link  href="/customers/create" style="float: right" type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Create Customer
-        </Link>
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -46,6 +43,11 @@
             </div>
         </div>
         <Pagination :links="customers.links"/>
+
+        <Link  href="/customers/create" style="float: right" type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Create Customer
+        </Link>
+
     </layout>
 </template>
 

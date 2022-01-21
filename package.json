@@ -29,10 +29,12 @@
         "@heroicons/vue": "^1.0.5",
         "@inertiajs/inertia": "^0.10.1",
         "@inertiajs/inertia-vue3": "^0.5.2",
+        "@smartweb/vue-flash-message": "^1.0.0-alpha.12",
         "@tailwindcss/ui": "^0.7.2",
         "@tailwindui/react": "^0.1.1",
         "@vue-hero-icons/outline": "^1.7.2",
         "moment": "^2.29.1",
+        "signature_pad": "^4.0.0",
         "vue": "^3.2.22"
     }
 }

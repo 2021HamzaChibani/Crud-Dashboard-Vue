@@ -41,7 +41,7 @@ class RegisterController extends Controller
 
         $user =  User::create($data);
         Auth::loginUsingId($user->id);
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.index')->with('message', ' Successfully Created!');
     }
 
     /**

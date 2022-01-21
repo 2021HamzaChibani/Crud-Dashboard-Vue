@@ -136,6 +136,9 @@
                                 </dl>
                                 <Link :href="route('users.edit', user.id)" class="text-indigo-600 hover:text-indigo-900">Edit</Link>
                             </div>
+                            <img :src="user.logo_url">
+                            <br>
+                            <img :src="user.signature_url">
                         </div>
                     </div>
                 </div>
@@ -154,6 +157,9 @@ export default {
     },
     props: {
         user: Object,
+
+    },
+    methods:{
     }
 }
 </script>
